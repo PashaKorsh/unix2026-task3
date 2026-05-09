@@ -1,0 +1,43 @@
+Test 1: start 3 child proc
+Expected: 3 child proc
+  PID COMMAND
+   41 sleep
+   42 sleep
+   43 sleep
+Found: 3
+PASS
+
+Test 2: kill child proc 2
+Killing pid    42
+Expected: 3 child proc
+  PID COMMAND
+   41 sleep
+   43 sleep
+   53 sleep
+Found: 3
+PASS
+
+Test 3: change config, SIGHUP, check
+Expected: 1 child proc
+  PID COMMAND
+   60 sleep
+Found: 1
+PASS
+
+Test 4: check logs
+--- log start ---
+myinit started
+started pid=41: /bin/sleep
+started pid=42: /bin/sleep
+started pid=43: /bin/sleep
+child pid=42 killed by signal 15
+started pid=53: /bin/sleep
+got SIGHUP, reloading config
+killed pid=41
+killed pid=53
+killed pid=43
+started pid=60: /bin/sleep
+--- log end ---
+Starts: 5 (expected >= 5)
+Ends: 4 (expected >= 4)
+PASS

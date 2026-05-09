@@ -1,0 +1,11 @@
+myinit started
+started pid=41: /bin/sleep
+started pid=42: /bin/sleep
+started pid=43: /bin/sleep
+child pid=42 killed by signal 15
+started pid=53: /bin/sleep
+got SIGHUP, reloading config
+killed pid=41
+killed pid=53
+killed pid=43
+started pid=60: /bin/sleep
